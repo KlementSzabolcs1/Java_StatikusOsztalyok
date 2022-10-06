@@ -15,6 +15,7 @@ public final class Veletlen {
     private static final List<String> ferfiKerNevek = feltolt("files/ferfikernev.txt");
     private static final List<String> noiKerNevek = feltolt("files/noikernev.txt");
 
+
     private static List<String> feltolt(String fajlnev) {
         List<String> lista = new ArrayList<>();
         try {
@@ -81,6 +82,7 @@ public final class Veletlen {
         Random rnd = new Random();
         return String.format("%s-%s-%s",rnd.nextInt(ev2)+ev1,rnd.nextInt(13)+1,rnd.nextInt(31)+1);
     }
+
     public static String velEmail(String nev){
         Random rnd = new Random();
         Boolean neme = true;
@@ -97,6 +99,32 @@ public final class Veletlen {
                 Normalizer.Form.NFD),i) ;
     }
 
+    public static String velMobil() {
+        Random rnd = new Random();
+        int segedszam = 0;
+        if (rnd.nextInt(4) == 1) {
+            segedszam = 30;
+        } else if (rnd.nextInt(4) == 2) {
+            segedszam = 50;
+        } else if (rnd.nextInt(4) == 3) {
+            segedszam = 60;
+        } else if (rnd.nextInt(4) == 4) {
+            segedszam = 70;
+        }
+        return String.format("+36 (%d) %d-%d-%d",segedszam,rnd.nextInt(999),rnd.nextInt(99),rnd.nextInt(99));
+    }
+
+    public static String velSportag() {
+        List<String> lista = new ArrayList<>();
+        lista = feltolt("sportag.txt");
+        return String.format("%s",lista.get(rnd.nextInt(lista.size())));
+    }
+
+    public static String velSportegyesulet() {
+        List<String> lista = new ArrayList<>();
+        lista = feltolt("egyesulet.txt");
+        return String.format("%s",lista.get(rnd.nextInt(lista.size())));
+    }
 
 
 

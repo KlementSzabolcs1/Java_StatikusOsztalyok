@@ -1,5 +1,8 @@
 package hu.petrik.statikusosztalyok;
 
+
+import java.util.Random;
+
 public class Main {
     /*
     int nemStatikusAdattag;
