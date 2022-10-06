@@ -2,10 +2,9 @@ package hu.petrik.statikusosztalyok;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.text.Normalizer;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public final class Veletlen {
     private Veletlen() {
@@ -74,4 +73,31 @@ public final class Veletlen {
     public static String velTeljesNev(boolean nem) {
         return velVezetekNev() + " " + velKeresztNev(nem);
     }
+
+//1,3,5,7,8,10,12
+//4,6,9,11
+//2
+    public static String velDatum(Integer ev1, Integer ev2) {
+        Random rnd = new Random();
+        return String.format("%s-%s-%s",rnd.nextInt(ev2)+ev1,rnd.nextInt(13)+1,rnd.nextInt(31)+1);
+    }
+    public static String velEmail(String nev){
+        Random rnd = new Random();
+        Boolean neme = true;
+        Normalizer normalizer;
+        if (rnd.nextInt(2) == 0) {
+            neme = false;
+        }
+        else {
+            neme = true;
+        }
+        int i = 0;
+        i++;
+        return String.format("%s%d@gmail.com",Normalizer.normalize(velTeljesNev(neme).toLowerCase(),
+                Normalizer.Form.NFD),i) ;
+    }
+
+
+
+
 }
